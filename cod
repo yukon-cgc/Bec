@@ -1,0 +1,49 @@
+import sys
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton)
+from PyQt5.QtGui import QPixmap
+
+class Bec(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Bec")
+        self.setGeometry(800, 900, 500, 600)
+        self.button = QPushButton("Aprinde becul", self)
+        # self.setStyleSheet("background-color: hsl(300, 14%, 42%)")
+        self.initUI()
+        label = QLabel(self)
+        label.setGeometry(100, 0, 300, 500)
+        pixmap1 = QPixmap("bec stins.png")
+        label.setPixmap(pixmap1)
+        label.setScaledContents(True)
+
+    def initUI(self):
+        self.button.setGeometry(100, 500, 300, 50)
+        self.button.setStyleSheet("font-size: 30px")
+        self.button.clicked.connect(self.aprins)
+
+    def aprins(self):
+        self.button.setText("S-a aprins becul!")
+        label = QLabel(self)
+        label.setGeometry(100, 0, 300, 500)
+        pixmap2 = QPixmap("bec_aprins.png")
+        # self.photo.setPixmap(QtGui.QPixmap("bec_aprins.png"))
+        label.setPixmap(pixmap2)
+        self.button.setDisabled(True)
+        # pixmap = QPixmap("bec aprins.png")
+
+    def stins(self):
+        pass
+        # pixmap = QPixmap("bec stins.png")
+
+        # label1 = QLabel("#1", self)
+        # label2 = QLabel("#2", self)
+        # label3 = QLabel("#3", self)
+
+        # label1.setStyleSheet("background-color: hsl(300, 90%, 49%)")
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    bec = Bec()
+    bec.show()
+    sys.exit(app.exec_())
